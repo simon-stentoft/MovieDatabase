@@ -10,7 +10,6 @@ async function fetchNowPlayingData() {
     const data = await response.json();
     const nowPlaying = data.results;
     console.log(nowPlaying);
-    console.log(nowPlaying[0].original_title);
   } catch (error) {
     console.error("Error fetching data:", error.message);
   }
