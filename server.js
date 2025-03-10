@@ -40,3 +40,51 @@ app.get("/now-playing", async (req, res) => {
     });
   }
 });
+
+app.get("/popular", async (req, res) => {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/movie/popular?api_key=${API_KEY}`
+    );
+    if (!response.ok) throw new Error("Failed to fetch popular movies");
+    const data = await response.json();
+    res.json(data);
+  } catch (error) {
+    res.status(500).json({
+      message: "Error fetching popular movies",
+      error: error.message,
+    });
+  }
+});
+
+app.get("/top-rated", async (req, res) => {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/movie/top_rated?api_key=${API_KEY}`
+    );
+    if (!response.ok) throw new Error("Failed to fetch top-rated movies");
+    const data = await response.json();
+    res.json(data);
+  } catch (error) {
+    res.status(500).json({
+      message: "Error fetching top-rated movies",
+      error: error.message,
+    });
+  }
+});
+
+app.get("/upcoming", async (req, res) => {
+  try {
+    const response = await fetch(
+      `${BASE_URL}/movie/upcoming?api_key=${API_KEY}`
+    );
+    if (!response.ok) throw new Error("Failed to fetch upcoming movies");
+    const data = await response.json();
+    res.json(data);
+  } catch (error) {
+    res.status(500).json({
+      message: "Error fetching upcoming movies",
+      error: error.message,
+    });
+  }
+});

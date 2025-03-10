@@ -1,7 +1,7 @@
 //import fetch from "node-fetch";
 
-async function fetchNowPlayingData() {
-  const URL = "http://localhost:3000/now-playing"; // Fetch from Express
+async function fetchNowPlayingData(endpoint) {
+  const URL = `http://localhost:3000/${endpoint}`; // Fetch from Express
   try {
     const response = await fetch(URL);
     if (!response.ok) {
@@ -15,4 +15,4 @@ async function fetchNowPlayingData() {
   }
 }
 
-fetchNowPlayingData();
+fetchNowPlayingData("now-playing");
