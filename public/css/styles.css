@@ -12,3 +12,7 @@ footer {
   text-align: center;
   position: fixed;
 }
+
+span {
+  font-weight: bold;
+}
