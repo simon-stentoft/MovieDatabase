@@ -1,0 +1,15 @@
+:root {
+  --maxWidth: 1024px;
+
+  --textColorPrimary: black;
+  --backgroundColorPrimary: white;
+
+  --textColorSecondary: white;
+  --backgroundColorSecondary: rgb(48, 43, 43);
+
+  --backgroundColorTertiary: #a13d2d;
+
+  --textColorNavActive: bisque;
+
+  --textColorCardHeader: rgb(252, 243, 233);
+}

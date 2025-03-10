@@ -10,14 +10,14 @@ async function fetchNowPlayingData(endpoint) {
     const data = await response.json();
     const nowPlaying = data.results;
     console.log(nowPlaying);
-    displayMovies(nowPlaying);
+    displayNowPlayingMovies(nowPlaying);
   } catch (error) {
     console.error("Error fetching data:", error.message);
   }
 }
 fetchNowPlayingData("now-playing");
 
-function displayMovies(movies) {
+function displayNowPlayingMovies(movies) {
   const movieList = document.getElementById("movie-list");
   movieList.innerText = ""; // Clear the existing content
 
@@ -35,8 +35,8 @@ function displayMovies(movies) {
     //Poster image
     const image = document.createElement("img");
     const imageUrl = movie.poster_path
-      ? `https://image.tmdb.org/t/p/w500${movie.poster_path}`
-      : "https://via.placeholder.com/210x295?text=No+Image";
+      ? `https://image.tmdb.org/t/p/w200${movie.poster_path}`
+      : "https://via.placeholder.com/200x200?text=No+Image";
     image.src = imageUrl;
     image.alt = `${movie.original_title} Poster`;
 
@@ -48,23 +48,18 @@ function displayMovies(movies) {
     //Title
     const originalTitle = document.createElement("p");
     originalTitle.classList.add("original-title");
-
     const titleText = document.createElement("span");
     titleText.innerText = "Original Title: ";
     originalTitle.appendChild(titleText);
-
     const movieTitleText = document.createTextNode(`${movie.original_title}`);
-
     originalTitle.appendChild(movieTitleText);
 
     //Release date
     const releaseDate = document.createElement("p");
     releaseDate.classList.add("release-date");
-
     const releaseDateText = document.createElement("span");
     releaseDateText.innerText = "Release Date: ";
     releaseDate.appendChild(releaseDateText);
-
     const movieReleaseDateText = document.createTextNode(
       `${movie.release_date}`
     );

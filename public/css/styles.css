@@ -11,8 +11,34 @@ footer {
   width: 100%;
   text-align: center;
   position: fixed;
+  background-color: var(--backgroundColorSecondary);
+  color: var(--textColorSecondary);
 }
 
 span {
   font-weight: bold;
+}
+
+header.header {
+  background-color: var(--backgroundColorSecondary);
+  color: var(--textColorCardHeader);
+  text-align: center;
+  padding: 0.5rem;
+}
+
+nav {
+  padding: 0 0 0 1rem;
+  background-color: var(--backgroundColorTertiary);
+  > ul {
+    list-style-type: none;
+  }
+  > ul > li > a {
+    text-decoration: none;
+    color: var(--textColorSecondary);
+  }
+  > ul > li > a.selected {
+    font-size: 1.2rem;
+    color: var(--textColorNavActive);
+    border-bottom: 0.1rem solid var(--textColorNavActive);
+  }
 }
