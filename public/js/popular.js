@@ -1,0 +1,3 @@
+import { fetchMovieData } from "./script.js";
+
+fetchMovieData("popular");

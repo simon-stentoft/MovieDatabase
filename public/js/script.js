@@ -1,6 +1,4 @@
-//import fetch from "node-fetch";
-
-async function fetchNowPlayingData(endpoint) {
+export async function fetchMovieData(endpoint) {
   const URL = `http://localhost:3000/${endpoint}`; // Fetch from Express
   try {
     const response = await fetch(URL);
@@ -8,16 +6,15 @@ async function fetchNowPlayingData(endpoint) {
       throw new Error(`Error: ${response.status}`);
     }
     const data = await response.json();
-    const nowPlaying = data.results;
-    console.log(nowPlaying);
-    displayNowPlayingMovies(nowPlaying);
+    const movies = data.results;
+    console.log(movies);
+    displayMovies(movies);
   } catch (error) {
     console.error("Error fetching data:", error.message);
   }
 }
-fetchNowPlayingData("now-playing");
 
-function displayNowPlayingMovies(movies) {
+function displayMovies(movies) {
   const movieList = document.getElementById("movie-list");
   movieList.innerText = ""; // Clear the existing content
 
