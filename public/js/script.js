@@ -19,30 +19,36 @@ function displayMovies(movies) {
   movieList.innerText = ""; // Clear the existing content
 
   movies.forEach((movie) => {
-    //New article for each movie
     const movieCard = document.createElement("article");
     movieCard.classList.add("movie-card");
 
-    //Header with the title
+    // Header with the title
     const header = document.createElement("header");
     const title = document.createElement("h2");
     title.innerText = movie.original_title;
     header.appendChild(title);
 
-    //Poster image
+    // Image container
+    const imageContainer = document.createElement("div");
+    imageContainer.classList.add("image-container");
     const image = document.createElement("img");
     const imageUrl = movie.poster_path
       ? `https://image.tmdb.org/t/p/w200${movie.poster_path}`
       : "https://via.placeholder.com/200x200?text=No+Image";
     image.src = imageUrl;
     image.alt = `${movie.original_title} Poster`;
+    imageContainer.appendChild(image);
 
-    //Description
+    // Text container for p tags
+    const textContainer = document.createElement("div");
+    textContainer.classList.add("text-container");
+
+    // Description
     const description = document.createElement("p");
     description.classList.add("description");
     description.innerText = movie.overview;
 
-    //Title
+    // Original Title
     const originalTitle = document.createElement("p");
     originalTitle.classList.add("original-title");
     const titleText = document.createElement("span");
@@ -51,7 +57,7 @@ function displayMovies(movies) {
     const movieTitleText = document.createTextNode(`${movie.original_title}`);
     originalTitle.appendChild(movieTitleText);
 
-    //Release date
+    // Release Date
     const releaseDate = document.createElement("p");
     releaseDate.classList.add("release-date");
     const releaseDateText = document.createElement("span");
@@ -62,12 +68,15 @@ function displayMovies(movies) {
     );
     releaseDate.appendChild(movieReleaseDateText);
 
-    //Assembling card
+    // Append p tags to text container
+    textContainer.appendChild(description);
+    textContainer.appendChild(originalTitle);
+    textContainer.appendChild(releaseDate);
+
+    // Assemble card
     movieCard.appendChild(header);
-    movieCard.appendChild(image);
-    movieCard.appendChild(description);
-    movieCard.appendChild(originalTitle);
-    movieCard.appendChild(releaseDate);
+    movieCard.appendChild(imageContainer);
+    movieCard.appendChild(textContainer);
 
     movieList.appendChild(movieCard);
   });
