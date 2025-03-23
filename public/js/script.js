@@ -1,5 +1,18 @@
+const API_KEY = "fb2d0289f8dc444a9994209489018bba";
+const BASE_URL = "https://api.themoviedb.org/3";
+
 export async function fetchMovieData(endpoint) {
-  const URL = `http://localhost:3000/${endpoint}`; // Fetch from Express
+  // Map our endpoints to TMDb's API endpoints
+  const endpointMap = {
+    'now-playing': 'movie/now_playing',
+    'popular': 'movie/popular',
+    'top-rated': 'movie/top_rated',
+    'upcoming': 'movie/upcoming'
+  };
+
+  const apiEndpoint = endpointMap[endpoint];
+  const URL = `${BASE_URL}/${apiEndpoint}?api_key=${API_KEY}`;
+
   try {
     const response = await fetch(URL);
     if (!response.ok) {
